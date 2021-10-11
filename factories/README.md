@@ -20,7 +20,7 @@ Please refer to the DSS and follow their setup and generate it yourself and load
 You may put it under `data/visualgenome` and name it as `saliency_512.imdb`.
 
 ## VGKR_v1
-It use the data under `data/visualgenomekr_ingredients/v1` to generate the visualgenomekr dataset used in 
+It uses the data under `data/visualgenomekr_ingredients/v1` to generate the visualgenomekr dataset used in 
 our paper [Sketching Image Gist: Human-Mimetic Hierarchical Scene Graph Generation (ECCV 2020)](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123580222.pdf) (conference version) and the journal version (**published soon**).
 1. Follow the settings of **Stanford filtered data**.
 2. Create the data folder `data/visualgenomekr`, `data/visualgenomekr_ingredients`, `data/visualgenomekr_ingredients/public_inputs`, and `data/visualgenomekr_ingredients/v1`.
@@ -49,36 +49,36 @@ Put them under `data/visualgenomekr`.
         - Use the [Stanford Scene Graph Parser](https://nlp.stanford.edu/software/scenegraph-parser.shtml) to transform the captions into scene graphs, or download our file [captions_to_sg_v1.json][1].
     3. Prepare the word embedding vectors from GloVe. Put the data files under the folder `data/GloVe`. 
 
-    4. Run the script [cleanse_raw_vg.py](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/tree/master/factories/vgkr_v1/cleanse_raw_vg.py) to generate two files or download our files:
+    4. Run the script [cleanse_raw_vg.py](vgkr_v1/cleanse_raw_vg.py) to generate two files or download our files:
      [cleanse\_objects.json][1], [cleanse_relationships.json][1]. It is expected to be under `data/visualgenomekr_ingredients/v1`.
     
-    5. Run the script [triplet_match.py](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/tree/master/factories/vgkr_v1/triplet_match.py) to generate or download the file
+    5. Run the script [triplet_match.py](vgkr_v1/triplet_match.py) to generate or download the file
     [cleanse\_triplet\_match.json][1]. It is expected to be under `data/visualgenomekr_ingredients/v1`.
         
-    6. Run the script [vg_to_roidb.py](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/tree/master/factories/vgkr_v1/vg_to_roidb.py) to generate the final annotation files: `VG200-SGG-dicts.json` and `VG200-SGG.h5` under `data/visualgenomekr/`. 
+    6. Run the script [vg_to_roidb.py](vgkr_v1/vg_to_roidb.py) to generate the final annotation files: `VG200-SGG-dicts.json` and `VG200-SGG.h5` under `data/visualgenomekr/`. 
 
 ## VGKR_v2
 
-There exist some differences from the VGKR_v1.
+The VGKR\_v2 is a developing dataset. There exist some differences from the VGKR_v1.
 1. Create the folder `data/visualgenomekr_ingredients/v2`.
 
 2. In the step of VGKR_v1.5.ii, we additionally make use of the [coco_entities_release.json](http://ailb-web.ing.unimore.it/releases/show-control-and-tell/coco_entities_release.json) (put it under `data/visualgenomekr_ingredients/public_inputs`) from [aimagelab/show-control-and-tell](https://github.com/aimagelab/show-control-and-tell).
-Thanks for their contributions. We provide jupyter notebooks ([extract_vgset.ipynb](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/blob/master/extract_vgset.ipynb) to get different vg splits 
-and [extract_vgkeyrel.ipynb](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/blob/master/extract_vgkeyrel.ipynb)) for generating the following related files. 
+Thanks for their contributions. We provide jupyter notebooks ([extract_vgset.ipynb](extract_vgset.ipynb) to get different vg splits 
+and [extract_vgkeyrel.ipynb](extract_vgkeyrel.ipynb)) for generating the following related files. 
     1. The original captions are added to the `captions_to_sg_v1.json` for convenience. We also add the attributes. This resulted in the [captions_to_sg_v2.json][2] under `data/visualgenomekr_ingredients/public_inputs`.
 
-    2. \[Deprecated\] ~~In the step of VGKR_v1.5.iv, we use the [vacancy/SceneGraphParser](https://github.com/vacancy/SceneGraphParser) and put this parser under `factories/utils/sng_parser`.
-Thanks for their contributions. Use this file `captions_to_sg.json` instead, or use [transform_captions_to_sg.py](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/blob/master/factories/vgkr_v2/transform_captions_to_sg.py) to generate it.~~
+    2. ~~\[Deprecated\] In the step of VGKR_v1.5.iv, we use the [vacancy/SceneGraphParser](https://github.com/vacancy/SceneGraphParser) and put this parser under `factories/utils/sng_parser`.
+Thanks for their contributions. Use this file `captions_to_sg.json` instead, or use [transform_captions_to_sg.py](vgkr_v2/deprecated_transform_captions_to_sg.py) to generate it.~~
     
     3. Using the `captions_to_sg_v2.json` and `coco_entities_release.json`, we finally obtained the `cap_sgentities_vgcoco.json` (put it under `data/visualgenomekr_ingredients/v2`),
     which contains 51,208 images with both scene graphs from captions and the entities of captions (NOTE: 16 images do not contain entities, because they are not in `coco_entities_release.json`). 
     
         
-3. In the step of VGKR_v1.5.iv, we run the script [cleanse_raw_vg.py](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/blob/master/factories/vgkr_v2/cleanse_raw_vg.py) to generate two files instead or download our files:
+3. In the step of VGKR_v1.5.iv, we run the script [cleanse_raw_vg.py](vgkr_v2/cleanse_raw_vg.py) to generate two files instead or download our files:
      `cleanse\_objects.json`, `cleanse_relationships.json`, and the additional `cleanse_attributes.json`. It is expected to be under `data/visualgenomekr_ingredients/v2`.
      In this v2 script, we do not use the most frequent name to replace the original name of each object. 
 
-4. Finally, through matching (see [extract_vgkeyrel.ipynb](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/blob/master/extract_vgkeyrel.ipynb) ),
+4. Finally, through matching (see [extract_vgkeyrel.ipynb](extract_vgkeyrel.ipynb) ),
 we have 26,234 images (446,117 relationships, 68,937 key relationships) with key relations among 51,208 images (746,018 relationships).
     
     - **NOTE**: since there are various splits for visualgenome, we generate the `meta_form.csv` (put it under `data/visualgenome/`) to record the most completed information of each image.
@@ -105,7 +105,7 @@ we follow the process of previous works. (113,287 train + 5,000 val + 5,000 test
 
 1. Create the folder `data/caption_coco`, `data/caption_coco/bottomup`, `data/caption_coco/karpathy_captions`.
 
-2. Download the bottom-up features and put them under `data/caption_coco/bottomup`. Run the script [factories/caption_coco/transform_bottomup_feats.py](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/blob/master/factories/caption_coco/transform_bottomup_feats.py)
+2. Download the bottom-up features and put them under `data/caption_coco/bottomup`. Run the script [factories/caption_coco/transform_bottomup_feats.py](caption_coco/transform_bottomup_feats.py)
 and it will produce the `up_down_10_100` folder under `data/caption_coco` by default. It contains three split, train (113,287), val (5,000), and test (5,000).
 Each of them contains `feature` and `boxsize` sub-folders. 
 
@@ -158,7 +158,7 @@ you will get `dataset_coco.json`. It contains totally 123,287 images and their r
 ]
 }
 ```
-Run the script [generate_labels_for_train.py](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/blob/master/factories/caption_coco/generate_labels_for_train.py)
+Run the script [generate_labels_for_train.py](caption_coco/generate_labels_for_train.py)
 to generate it. You should set the proper file paths in it. E.g., it need the `dataset_coco.json`, `coco_vocabulary.txt`, and `coco_val_img_id.txt` as input. 
 You will obtain `coco_val_input.pkl`, and `coco_val_target.pkl`. You can also run the script to get `coco_test_input.pkl` and `coco_test_target.pkl`.
 
@@ -168,8 +168,8 @@ This is the dataset from the work: Dense Relational Image Captioning
 via Multi-task Triple-Stream Networks, CVPR19.
 
 ## Generalized Visual Genome
-This is the byproduct of VGKR\_V2. We provide the script [get_generalized_roidb.py](https://github.com/Kenneth-Wong/Scene-Graph-Benchmark-mmdet.pytorch/blob/master/factories/vgkr_v2/get_generalized_roidb.py)
-for generate the data. The outcome dataset can be placed under ```data/visualgenomegn```, which may include
+This is the byproduct of VGKR\_V2. We provide the script [get_generalized_roidb.py](vgkr_v2/get_generalized_roidb.py)
+for generate the data. The outcome dataset can be placed under ```data/visualgenomegn```, which includes
 ```
 visualgenomegn
 ├── meta_form.csv
