@@ -7,16 +7,22 @@
 
 MMSceneneGraph is an open source code hub for scene graph generation as well as supporting downstream tasks based on the scene graph on PyTorch. The frontend object detector is supported by [open-mmlab/mmdetection](https://github.com/open-mmlab/mmdetection). 
 
+![demo image](demo/2343728_vis_sg.png)
+
 
 ### Major features
 
-- **Modular Design**
+- **Modular design**
 
   We decompose the framework into different components and one can easily construct a customized scene graph generation framework by combining different modules.
 
 - **Support of multiple frameworks out of box**
 
-  The toolbox directly supports popular and contemporary detection frameworks, *e.g.* Faster RCNN, Mask RCNN, RetinaNet, etc.
+  The toolbox directly supports popular and contemporary detection frameworks, *e.g.* Faster RCNN, Mask RCNN, etc.
+
+- **Visualization support**
+  
+  The visualization of the groundtruth/predicted scene graph is integrated into the toolbox.
 
 ## License
 
@@ -24,34 +30,47 @@ This project is released under the [MIT license](LICENSE).
 
 ## Changelog
 
+Please refer to [CHANGELOG.md](docs/CHANGELOG.md) for details.
 
 
 ## Benchmark and model zoo
 
-Results and models are available in the [model zoo](docs/model_zoo.md).
+The original object detection results and models provided by mmdetection are available in the [model zoo](docs/MODEL_ZOO.md). The models for the scene graph generation are
+temporarily unavailable yet. 
 
-Supported backbones:
+## Supported methods and Datasets
 
-- [x] ResNet (CVPR'2016)
-- [x] ResNeXt (CVPR'2017)
-- [x] VGG (ICLR'2015)
-- [x] HRNet (CVPR'2019)
-- [x] RegNet (CVPR'2020)
-- [x] Res2Net (TPAMI'2020)
-- [x] ResNeSt (ArXiv'2020)
+Supported SGG (VRD) methods:
 
-Supported methods:
+- [x] Neural Motifs (CVPR'2018)
+- [x] VCTree (CVPR'2019)
+- [x] TDE (CVPR'2020)
+- [x] VTransE (CVPR'2017)
+- [x] IMP (CVPR'2017)
+- [x] KERN (CVPR'2019)
+- [x] GPSNet (CVPR'2020)
+- [x] HetH (ECCV'2020, ours)
+- [x] TopicSG (ICCV'2021, ours)
 
-- [x] [RPN (NeurIPS'2015)](configs/rpn)
+Supported datasets:
+
+- [x] Visual Genome: VG150 (CVPR'2017)
+- [x] VRD (ECCV'2016)
+- [x] Visual Genome: VG200/VG-KR (ours)
+- [x] MSCOCO (for object detection, image caption)
+- [x] RelCap (from VG and COCO, ours)
+
 
 
 ## Installation
 
-- mmcv and mmdetection: Please refer to [mmdetection](https://github.com/open-mmlab/mmdetection) for installation. 
+As our project is built on mmdetection 1.x (which is a bit different from their current master version 2.x), please refer to [INSTALL.md](docs/INSTALL.md). 
+If you want to use mmdetection 2.x, please
+ refer to [mmdetection/get_start.md](https://github.com/open-mmlab/mmdetection/blob/master/docs/get_started.md).
 
 ## Getting Started
+Please refer to [GETTING_STARTED.md](docs/GETTING_STARTED.md) for using the projects. We will update it constantly.
 
-## Contributing
 
 ## Acknowledgement
 
@@ -66,6 +85,7 @@ If you find this code hub or our works useful in your research works, please con
   title={Topic Scene Graph Generation by Attention Distillation from Caption},
   author={Wang, Wenbin and Wang, Ruiping and Chen, Xilin},
   booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages={15900--15910},
   month = {October},
   year={2021}
 }
