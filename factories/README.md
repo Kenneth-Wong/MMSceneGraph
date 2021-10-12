@@ -74,8 +74,8 @@ Thanks for their contributions. Use this file `captions_to_sg.json` instead, or 
     which contains 51,208 images with both scene graphs from captions and the entities of captions (NOTE: 16 images do not contain entities, because they are not in `coco_entities_release.json`). 
     
         
-3. In the step of VGKR_v1.5.iv, we run the script [cleanse_raw_vg.py](vgkr_v2/cleanse_raw_vg.py) to generate two files instead or download our files:
-     `cleanse\_objects.json`, `cleanse_relationships.json`, and the additional `cleanse_attributes.json`. It is expected to be under `data/visualgenomekr_ingredients/v2`.
+3. In VGKR_v1 step 5.iv, we run the script [cleanse_raw_vg.py](vgkr_v2/cleanse_raw_vg.py) to generate two files instead or download our files:
+     `cleanse_objects.json`, `cleanse_relationships.json`, and the additional `cleanse_attributes.json`. It is expected to be under `data/visualgenomekr_ingredients/v2`.
      In this v2 script, we do not use the most frequent name to replace the original name of each object. 
 
 4. Finally, through matching (see [extract_vgkeyrel.ipynb](extract_vgkeyrel.ipynb) ),

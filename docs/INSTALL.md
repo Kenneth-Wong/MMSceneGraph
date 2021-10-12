@@ -16,7 +16,7 @@ We have tested the following versions of OS and softwares:
 - CUDA: 10.1
 - GCC(G++): 5.4.0
 
-### Install mmdetection
+### Install MMSceneGraph
 
 a. Create a conda virtual environment and activate it.
 

@@ -52,6 +52,15 @@ Supported SGG (VRD) methods:
 - [x] HetH (ECCV'2020, ours)
 - [x] TopicSG (ICCV'2021, ours)
 
+Supported saliency object detection methods:
+- [x] R3Net (IJCAI'2018)
+- [x] SCRN (ICCV'2019)
+
+Supported image captioning methods:
+- [x] bottom-up (CVPR'2018)
+- [x] XLAN (CVPR'2020)
+
+
 Supported datasets:
 
 - [x] Visual Genome: VG150 (CVPR'2017)
